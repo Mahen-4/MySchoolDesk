@@ -10,8 +10,10 @@ function AddStudent() {
         try {
             const formData = new FormData();
             formData.append('file', selectedFile) 
-            await Axios.post("http://localhost:5271/WeatherForecast/upload", formData,{headers:{'Content-Type': 'multipart/form-data'}})
-            console.log("SUCCESS")
+            await Axios.post("http://localhost:5271/ManageStudent/upload", formData,{headers:{'Content-Type': 'multipart/form-data'}})
+            .then(res => {
+              console.log(res)
+            })
         } catch (error) {
             console.log(error)
         }
