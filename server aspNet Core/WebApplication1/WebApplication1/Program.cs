@@ -1,5 +1,9 @@
 
 
+using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
+using WebApplication1.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -12,10 +16,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<DataContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+    );
+
 builder.Services.AddCors(p => p.AddPolicy("corspolicy", build =>
 {
     build.WithOrigins("http://localhost:5173").AllowAnyMethod().AllowAnyHeader();
 }));
+
+ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
 
 var app = builder.Build();
