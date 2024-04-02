@@ -18,33 +18,40 @@ namespace WebApplication1.Controllers
 
             List<List<string>> excelData = new List<List<string>>();
 
-            using ( var stream = new MemoryStream())
+            var stream = new MemoryStream();
+            
+            file.CopyTo(stream);
+            using(var package = new ExcelPackage(stream))
             {
-                file.CopyTo(stream);
-                using(var package = new ExcelPackage(stream))
+                var worksheet = package.Workbook.Worksheets.First();
+                var rowCount = worksheet.Dimension.Rows;
+                var colCount = worksheet.Dimension.Columns;
+
+                for(int col = 1; col <= colCount; col++)
                 {
-                    var worksheet = package.Workbook.Worksheets.First();
-                    var rowCount = worksheet.Dimension.Rows;
-                    var colCount = worksheet.Dimension.Columns;
-
-                    for(int col = 1; col <= colCount; col++)
+                    List<string> rowData = new List<string>();
+                    for (int row = 1; row <= rowCount; row++)
                     {
-                        List<string> rowData = new List<string>();
-                        for (int row = 1; row <= rowCount; row++)
-                        {
-                            var cellValue = worksheet.Cells[row, col].Value?.ToString();
-                            rowData.Add(cellValue);
-                        }
-                        excelData.Add(rowData);
+                        var cellValue = worksheet.Cells[row, col].Value?.ToString();
+                        rowData.Add(cellValue);
                     }
+                    excelData.Add(rowData);
                 }
-
             }
+            stream.Position = 0;
+            byte[] fileBytes = stream.ToArray();
+            return File(fileBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "test.xlsx");
+            
 
-            return Ok(excelData);
+
         }
 
-
+        [HttpGet("uploadGET")]
+        public IActionResult Test()
+        {
+            var data = new { Message = "Hello, world!" };
+            return Ok(data);
+        }
 
     }
 }
