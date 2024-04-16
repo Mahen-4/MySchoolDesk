@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "MFUCcnCSVT1SmWUOvtz36sB1+iewuCl88CbFMA3cKImu4dOq08FLFzRFzJXXE8PKjR1s2jiNwNmZBsi+qaPLYg==",
+  "dgSpecHash": "qZRg8wgjs6Krzp1KUsFsXMMnrUr0x/xf/neUSLqR8riQVA1nOotNz34NoJFpnRnn/ABgf9tQaIbXAdANufyZxA==",
   "success": true,
   "projectFilePath": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\pc\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\dotnetenv\\3.0.0\\dotnetenv.3.0.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\epplus\\7.1.0\\epplus.7.1.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\epplus.interfaces\\6.1.1\\epplus.interfaces.6.1.1.nupkg.sha512",

@@ -79,6 +79,10 @@ namespace WebApplication1.Data
                 .HasForeignKey(s => s.SchoolClassId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
             base.OnModelCreating(modelBuilder);
         }
     }

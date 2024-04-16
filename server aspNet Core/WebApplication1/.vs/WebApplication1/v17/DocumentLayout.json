@@ -7,12 +7,24 @@
       "RelativeMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\managestudentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|c:\\users\\pc\\desktop\\js_training\\school dashboard\\school-dashboard\\server aspnet core\\webapplication1\\webapplication1\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|c:\\users\\pc\\desktop\\js_training\\school dashboard\\school-dashboard\\server aspnet core\\webapplication1\\webapplication1\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|c:\\users\\pc\\desktop\\js_training\\school dashboard\\school-dashboard\\server aspnet core\\webapplication1\\webapplication1\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|c:\\users\\pc\\desktop\\js_training\\school dashboard\\school-dashboard\\server aspnet core\\webapplication1\\webapplication1\\models\\schoolclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\schoolclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|c:\\users\\pc\\desktop\\js_training\\school dashboard\\school-dashboard\\server aspnet core\\webapplication1\\webapplication1\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|c:\\users\\pc\\desktop\\js_training\\school dashboard\\school-dashboard\\server aspnet core\\webapplication1\\webapplication1\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|c:\\users\\pc\\desktop\\js_training\\school dashboard\\school-dashboard\\server aspnet core\\webapplication1\\webapplication1\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -25,14 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|c:\\users\\pc\\desktop\\js_training\\school dashboard\\school-dashboard\\server aspnet core\\webapplication1\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|c:\\users\\pc\\desktop\\js_training\\school dashboard\\school-dashboard\\server aspnet core\\webapplication1\\webapplication1\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|c:\\users\\pc\\desktop\\js_training\\school dashboard\\school-dashboard\\server aspnet core\\webapplication1\\webapplication1\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97F0537A-168C-4BF3-9505-53BBAB30DE97}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,8 +46,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SchoolClass.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\Models\\SchoolClass.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\SchoolClass.cs",
+              "ToolTip": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\Models\\SchoolClass.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\SchoolClass.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T21:20:02.995Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -52,14 +69,14 @@
               "RelativeDocumentMoniker": "WebApplication1\\Controllers\\ManageStudentController.cs",
               "ToolTip": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\Controllers\\ManageStudentController.cs",
               "RelativeToolTip": "WebApplication1\\Controllers\\ManageStudentController.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAuwDkAAAAzAAAA",
+              "ViewState": "AQIAAGUAAAAAAAAAAAAAAIoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-02T19:31:50.237Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\Models\\User.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\User.cs",
@@ -72,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\appsettings.Development.json",
               "RelativeDocumentMoniker": "WebApplication1\\appsettings.Development.json",
@@ -84,44 +101,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Student.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\Models\\Student.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\Student.cs",
               "ToolTip": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\Models\\Student.cs",
               "RelativeToolTip": "WebApplication1\\Models\\Student.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-01T15:02:25.072Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "Exam.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\Models\\Exam.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\Exam.cs",
               "ToolTip": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\Models\\Exam.cs",
               "RelativeToolTip": "WebApplication1\\Models\\Exam.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-01T14:47:38.301Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "DataContext.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\Data\\DataContext.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Data\\DataContext.cs",
               "ToolTip": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\Data\\DataContext.cs",
               "RelativeToolTip": "WebApplication1\\Data\\DataContext.cs",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAqwDwAAAAwAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEAAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-01T14:47:03.213Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\appsettings.json",
               "RelativeDocumentMoniker": "WebApplication1\\appsettings.json",
@@ -133,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Desktop\\Js_training\\School Dashboard\\school-dashboard\\server aspNet Core\\WebApplication1\\WebApplication1\\Program.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Program.cs",

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 using System.Security.Cryptography;
 using System.Text;
+using WebApplication1.Data;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
@@ -10,6 +12,15 @@ namespace WebApplication1.Controllers
     [Route("[controller]")]
     public class ManageStudentController : ControllerBase
     {
+        private readonly DataContext _context;
+
+        public ManageStudentController(DataContext context)
+        {
+            _context = context;
+        }
+
+
+
         //create all students, school class / send a new "excel" file to the front with all the new data (Full Name, Email, Password)
         [HttpPost("upload")]
         public async Task<IActionResult> UploadFile(IFormFile file)
@@ -39,32 +50,78 @@ namespace WebApplication1.Controllers
                     var colCount = worksheet.Dimension.Columns;
 
                     var className = "";
-                    var classID = 0;
                     var rowSheet = 2;
                     //Loop over the excel file
                     for (int col = 1; col <= colCount; col++)
                     {
                         for (int row = 1; row <= rowCount; row++)
                         {
-                            if(row == 1)
+                            if (row == 1)
                             {
                                 // Create School Class
                                 className = worksheet.Cells[row, col].Value?.ToString();
+                                try
+                                {
+                                    if(className != null)
+                                    {
+                                        var classN = new SchoolClass();
+                                        classN.ClassName = className;
+                                        _context.SchoolClasses.Add(classN);
+                                        _context.SaveChanges();
+
+                                    }
+                                }catch (Exception ex)
+                                {
+                                    return BadRequest(ex + "className ADD");
+                                }
                             }
                             else
                             {
                                 //Create Student 
-                                var StudentFullName = worksheet.Cells[row, col].Value?.ToString();
-                                var StudentEmail = StudentFullName + "@msdmail.com";
-                                Random rnd = new Random();
-                                int studentPassword = rnd.Next();
-                                worksheetToSend.Cells[rowSheet, 1].Value = StudentFullName;
-                                worksheetToSend.Cells[rowSheet, 2].Value = StudentEmail;
-                                worksheetToSend.Cells[rowSheet, 3].Value = studentPassword;
-                                worksheetToSend.Cells[rowSheet, 4].Value = className;
-                                rowSheet++;
+                                if(worksheet.Cells[row, col].Value?.ToString() != "")
+                                {
+                                    var StudentFullName = worksheet.Cells[row, col].Value?.ToString();
+                                    var StudentEmail = StudentFullName != null ? String.Concat(StudentFullName.Where(c => !Char.IsWhiteSpace(c))) + "@msdmail.com" : null;
+                                    Random rnd = new Random();
+                                    int rndInt = rnd.Next();
+                                    string studentPassword = BCrypt.Net.BCrypt.HashPassword(rndInt.ToString());
+                                    if(StudentFullName != null & StudentEmail != null)
+                                    {
+                                        worksheetToSend.Cells[rowSheet, 1].Value = StudentFullName;
+                                        worksheetToSend.Cells[rowSheet, 2].Value = StudentEmail;
+                                        worksheetToSend.Cells[rowSheet, 3].Value = rndInt;
+                                        worksheetToSend.Cells[rowSheet, 4].Value = className;
+                                        rowSheet++;
+                                        var userStudent = new User
+                                        {
+                                            Name = StudentFullName,
+                                            Email = StudentEmail,
+                                            Password = studentPassword.ToString()
+                                        };
+                                        _context.Users.Add(userStudent);
+                                        _context.SaveChanges();
+                                        var scId = _context.SchoolClasses.Where(sc => sc.ClassName == className).FirstOrDefault();
+                                        var newStudent = new Student
+                                        {
+                                            UserId = userStudent.Id,
+                                            SchoolClassId = scId.Id
+                                        };
+                                        try
+                                        {
+                                            _context.Students.Add(newStudent);
+                                            _context.SaveChanges();
+                                        }
+                                        catch (Exception e)
+                                        {
+                                            return BadRequest(e + "student ADD");
+                                        }
+                                    }
+                                    
+
+                                }
+                                
                             }
-                           
+
                         }
                     }
                 }
@@ -76,12 +133,6 @@ namespace WebApplication1.Controllers
 
         }
 
-        [HttpGet("uploadGET")]
-        public IActionResult Test()
-        {
-            var data = new { Message = "Hello, world!" };
-            return Ok(data);
-        }
-
+       
     }
 }
