@@ -1,8 +1,10 @@
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileSystemGlobbing.Internal;
 using OfficeOpenXml;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using WebApplication1.Data;
 using WebApplication1.Models;
 
@@ -29,15 +31,16 @@ namespace WebApplication1.Controllers
             {
                 return BadRequest("No file uploaded");
             }
-
+            string patternRegexL = @"[a-zA-Z]+";
+            string patternRegexLM = @"[a-zA-Z0-9]+";
 
             //init the worksheet for file send to the front
             var packageToSend = new ExcelPackage();
             var worksheetToSend = packageToSend.Workbook.Worksheets.Add("Sheet1");
-            worksheetToSend.Cells[1, 1].Value = "Full Name";
-            worksheetToSend.Cells[1, 2].Value = "Email";
-            worksheetToSend.Cells[1, 3].Value = "Password";
-            worksheetToSend.Cells[1, 4].Value = "School Class";
+            worksheetToSend.Cells[1, 1].Value = "Full Name ---------------";
+            worksheetToSend.Cells[1, 2].Value = "Email ------------------------------";
+            worksheetToSend.Cells[1, 3].Value = "Password -------------------";
+            worksheetToSend.Cells[1, 4].Value = "School Class --------";
 
             using (var stream = new MemoryStream())
             {
@@ -54,15 +57,18 @@ namespace WebApplication1.Controllers
                     //Loop over the excel file
                     for (int col = 1; col <= colCount; col++)
                     {
+                        worksheetToSend.Columns[col].AutoFit();
                         for (int row = 1; row <= rowCount; row++)
                         {
                             if (row == 1)
                             {
                                 // Create School Class
                                 className = worksheet.Cells[row, col].Value?.ToString();
+                                
+                                Match m = Regex.Match(className != null ? className : "" , patternRegexLM, RegexOptions.IgnoreCase);
                                 try
                                 {
-                                    if(className != null)
+                                    if(className != null & m.Success)
                                     {
                                         var classN = new SchoolClass();
                                         classN.ClassName = className;
@@ -78,7 +84,8 @@ namespace WebApplication1.Controllers
                             else
                             {
                                 //Create Student 
-                                if(worksheet.Cells[row, col].Value?.ToString() != "")
+                                Match m = Regex.Match(worksheet.Cells[row, col].Value?.ToString() != null ? worksheet.Cells[row, col].Value?.ToString() : "" , patternRegexL, RegexOptions.IgnoreCase);
+                                if (worksheet.Cells[row, col].Value?.ToString() != "" & m.Success)
                                 {
                                     var StudentFullName = worksheet.Cells[row, col].Value?.ToString();
                                     var StudentEmail = StudentFullName != null ? String.Concat(StudentFullName.Where(c => !Char.IsWhiteSpace(c))) + "@msdmail.com" : null;
