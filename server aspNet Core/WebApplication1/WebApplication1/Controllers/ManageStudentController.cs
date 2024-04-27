@@ -32,9 +32,9 @@ namespace WebApplication1.Controllers
                 return BadRequest("No file uploaded");
             }
             string patternRegexL = @"[a-zA-Z]+";
-            string patternRegexLM = @"[a-zA-Z0-9]+";
+            string patternRegexLN = @"^[a-zA-Z0-9\s]+$";
 
-            //init the worksheet for file send to the front
+            //init the worksheet for file sent to the front -  first row values 
             var packageToSend = new ExcelPackage();
             var worksheetToSend = packageToSend.Workbook.Worksheets.Add("Sheet1");
             worksheetToSend.Cells[1, 1].Value = "Full Name ---------------";
@@ -54,26 +54,36 @@ namespace WebApplication1.Controllers
 
                     var className = "";
                     var rowSheet = 2;
+                    var sch = new List<SchoolClass>();
                     //Loop over the excel file
                     for (int col = 1; col <= colCount; col++)
                     {
-                        worksheetToSend.Columns[col].AutoFit();
+                        worksheetToSend.Columns[col].AutoFit(); // fit cells 
                         for (int row = 1; row <= rowCount; row++)
                         {
                             if (row == 1)
                             {
-                                // Create School Class
+                                // Create School Class - Process
+
                                 className = worksheet.Cells[row, col].Value?.ToString();
-                                
-                                Match m = Regex.Match(className != null ? className : "" , patternRegexLM, RegexOptions.IgnoreCase);
+
+                                //check if cell value match REGEX (only letters and numbers)
+
+                                var cmCheck = String.Concat(className.Where(c => !Char.IsWhiteSpace(c)));
+                                Match m = Regex.Match(cmCheck, patternRegexLN);
                                 try
                                 {
+                                    
                                     if(className != null & m.Success)
                                     {
+                                        // creating school Class
                                         var classN = new SchoolClass();
                                         classN.ClassName = className;
                                         _context.SchoolClasses.Add(classN);
                                         _context.SaveChanges();
+
+                                        //get all school classes
+                                         sch = _context.SchoolClasses.ToList();
 
                                     }
                                 }catch (Exception ex)
@@ -83,10 +93,13 @@ namespace WebApplication1.Controllers
                             }
                             else
                             {
-                                //Create Student 
+                                //Create Student (Name, generated Email, Generated Password)
                                 Match m = Regex.Match(worksheet.Cells[row, col].Value?.ToString() != null ? worksheet.Cells[row, col].Value?.ToString() : "" , patternRegexL, RegexOptions.IgnoreCase);
+                                
+                                //check if cell value match REGEX (only letters)
                                 if (worksheet.Cells[row, col].Value?.ToString() != "" & m.Success)
                                 {
+
                                     var StudentFullName = worksheet.Cells[row, col].Value?.ToString();
                                     var StudentEmail = StudentFullName != null ? String.Concat(StudentFullName.Where(c => !Char.IsWhiteSpace(c))) + "@msdmail.com" : null;
                                     Random rnd = new Random();
@@ -107,11 +120,11 @@ namespace WebApplication1.Controllers
                                         };
                                         _context.Users.Add(userStudent);
                                         _context.SaveChanges();
-                                        var scId = _context.SchoolClasses.Where(sc => sc.ClassName == className).FirstOrDefault();
+                                        var schId = sch.Where(sc => sc.ClassName == className).FirstOrDefault();
                                         var newStudent = new Student
                                         {
                                             UserId = userStudent.Id,
-                                            SchoolClassId = scId.Id
+                                            SchoolClassId = schId.Id
                                         };
                                         try
                                         {

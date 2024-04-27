@@ -13,6 +13,7 @@ function AddStudent() {
             formData.append('file', selectedFile) 
             await Axios.post("http://localhost:5271/ManageStudent/upload", formData,{headers:{'Content-Type': 'multipart/form-data'}, responseType: "blob"})
             .then(res => {
+              console.log(res)
               const blob = new Blob([res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
               const url = window.URL.createObjectURL(blob)
               setFileDownload(url)
