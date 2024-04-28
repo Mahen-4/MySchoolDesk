@@ -1,5 +1,5 @@
 import React, {ChangeEvent } from "react"
-import Axios from "axios";
+import Axios, { AxiosError } from "axios";
 function AddStudent() {
 
     const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
@@ -9,6 +9,7 @@ function AddStudent() {
         if (!selectedFile) return;
 
         try {
+            console.log("truy")
             const formData = new FormData();
             formData.append('file', selectedFile) 
             await Axios.post("http://localhost:5271/ManageStudent/upload", formData,{headers:{'Content-Type': 'multipart/form-data'}, responseType: "blob"})
@@ -19,8 +20,13 @@ function AddStudent() {
               setFileDownload(url)
             })
 
-        } catch (error) {
-            console.log(error)
+        } catch (error: any  ) {
+            if(error.response.status == 401){
+              console.log("one field values do not respect the law of the app")
+            }
+            else{
+              console.log("Intern Error OR File Type not allowed ")
+            }
         }
     }
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
