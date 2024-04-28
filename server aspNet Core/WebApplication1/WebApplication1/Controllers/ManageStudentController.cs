@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileSystemGlobbing.Internal;
 using OfficeOpenXml;
@@ -84,23 +85,28 @@ namespace WebApplication1.Controllers
 
                                         //get all school classes
                                          sch = _context.SchoolClasses.ToList();
-
+                                    }
+                                    else {
+                                      
+                                        return Unauthorized("School Class names not allowed"); 
                                     }
                                 }catch (Exception ex)
                                 {
-                                    return BadRequest(ex + "className ADD");
+                                    return NotFound("Error Intern");
                                 }
                             }
                             else
                             {
+
+                                var cellValue = worksheet.Cells[row, col].Value?.ToString();
                                 //Create Student (Name, generated Email, Generated Password)
-                                Match m = Regex.Match(worksheet.Cells[row, col].Value?.ToString() != null ? worksheet.Cells[row, col].Value?.ToString() : "" , patternRegexL, RegexOptions.IgnoreCase);
+                                Match m = Regex.Match( cellValue != null ? cellValue : "" , patternRegexL, RegexOptions.IgnoreCase);
                                 
                                 //check if cell value match REGEX (only letters)
-                                if (worksheet.Cells[row, col].Value?.ToString() != "" & m.Success)
+                                if (cellValue != "" && m.Success && sch.Count != 0)
                                 {
 
-                                    var StudentFullName = worksheet.Cells[row, col].Value?.ToString();
+                                    var StudentFullName = cellValue;
                                     var StudentEmail = StudentFullName != null ? String.Concat(StudentFullName.Where(c => !Char.IsWhiteSpace(c))) + "@msdmail.com" : null;
                                     Random rnd = new Random();
                                     int rndInt = rnd.Next();
@@ -133,8 +139,13 @@ namespace WebApplication1.Controllers
                                         }
                                         catch (Exception e)
                                         {
-                                            return BadRequest(e + "student ADD");
+                                            return NotFound("Intern Error");
                                         }
+                                    }
+                                    else
+                                    {
+                                      
+                                        return Unauthorized("One field value is not allowed ");
                                     }
                                     
 
