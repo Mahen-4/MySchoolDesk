@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using WebApplication1.Data;
 using WebApplication1.Models;
+using WebApplication1.Repositories.Repo_Interfaces;
 
 namespace WebApplication1.Controllers
 {
@@ -15,11 +16,15 @@ namespace WebApplication1.Controllers
     [Route("[controller]")]
     public class ManageStudentController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly IUserRepository _userRepository;
+        private readonly IStudentRepository _studentRepository;
+        private readonly ISchoolClassRepository _schoolClassRepository;
 
-        public ManageStudentController(DataContext context)
+        public ManageStudentController(IUserRepository userRepository, IStudentRepository studentRepository, ISchoolClassRepository schoolClassRepository)
         {
-            _context = context;
+            _userRepository = userRepository;
+            _studentRepository = studentRepository;
+            _schoolClassRepository = schoolClassRepository;
         }
 
 
@@ -80,14 +85,16 @@ namespace WebApplication1.Controllers
                                         // creating school Class
                                         var classN = new SchoolClass();
                                         classN.ClassName = className;
-                                        _context.SchoolClasses.Add(classN);
-                                        _context.SaveChanges();
+                                        _schoolClassRepository.Add(classN);
+
 
                                         //get all school classes
-                                         sch = _context.SchoolClasses.ToList();
+                                         sch = _schoolClassRepository.GetAll().ToList();
                                     }
                                     else {
-                                      
+                                        //Delete data already inserted before the error
+                                        _schoolClassRepository.RemoveAll();
+                                        _userRepository.RemoveAll();
                                         return Unauthorized("School Class names not allowed"); 
                                     }
                                 }catch (Exception ex)
@@ -99,6 +106,7 @@ namespace WebApplication1.Controllers
                             {
 
                                 var cellValue = worksheet.Cells[row, col].Value?.ToString();
+
                                 //Create Student (Name, generated Email, Generated Password)
                                 Match m = Regex.Match( cellValue != null ? cellValue : "" , patternRegexL, RegexOptions.IgnoreCase);
                                 
@@ -118,24 +126,22 @@ namespace WebApplication1.Controllers
                                         worksheetToSend.Cells[rowSheet, 3].Value = rndInt;
                                         worksheetToSend.Cells[rowSheet, 4].Value = className;
                                         rowSheet++;
-                                        var userStudent = new User
+                                        var newUser = new User
                                         {
                                             Name = StudentFullName,
                                             Email = StudentEmail,
                                             Password = studentPassword.ToString()
                                         };
-                                        _context.Users.Add(userStudent);
-                                        _context.SaveChanges();
+                                        _userRepository.Add(newUser);
                                         var schId = sch.Where(sc => sc.ClassName == className).FirstOrDefault();
                                         var newStudent = new Student
                                         {
-                                            UserId = userStudent.Id,
+                                            UserId = newUser.Id,
                                             SchoolClassId = schId.Id
                                         };
                                         try
                                         {
-                                            _context.Students.Add(newStudent);
-                                            _context.SaveChanges();
+                                            _studentRepository.Add(newStudent);
                                         }
                                         catch (Exception e)
                                         {
@@ -144,7 +150,9 @@ namespace WebApplication1.Controllers
                                     }
                                     else
                                     {
-                                      
+                                        //Delete data already inserted before the error
+                                        _schoolClassRepository.RemoveAll();
+                                        _userRepository.RemoveAll();
                                         return Unauthorized("One field value is not allowed ");
                                     }
                                     
